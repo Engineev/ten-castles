@@ -33,4 +33,4 @@ if __name__ == '__main__':
             print("Invalid strategy")
             exit(-1)
 
-        print('The score you get:', proxy.add(args.identifier, strategy))
+        print('The score you got:', proxy.add(args.identifier, strategy))

@@ -26,7 +26,6 @@ class Server:
         for k, v in self._strategies.items():
             if k == name:
                 continue
-            print(k, v)
             for i in range(0, 10):
                 if strategy[i] > 2 * v[i]:
                     score += i + 1
