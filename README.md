@@ -12,5 +12,15 @@ python3 ./server.py 50001
 And for the client side,
 
 ```bash
-python3 ./client.py -s=localhost:50001 -id=uniform 10 10 10 10 10 10 10 10 10 10
+python3 ./client.py localhost:50001
+
+# The following lines are the input
+add uniform 10 10 10 10 10 10 10 10 10 10
+run uniform
+delete uniform
+exit
+
 ```
+
+where 'uniform' is the identifier of the strategy. It is encouraged to add a
+prefix, such as 'evensgn_' before the identifier to avoid conflicts. 
