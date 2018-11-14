@@ -27,15 +27,15 @@ def run(address):
                 if not valid_strategy(strategy):
                     print("Invalid strategy")
                     continue
-                score = proxy.add(name, strategy)
-                print('The score you got:', score)
+                res = proxy.add(name, strategy)
+                print(str(res))
             elif cmd[0] == 'delete':
                 name = cmd[1]
                 proxy.delete(name)
             elif cmd[0] == 'run':
                 name = cmd[1]
-                score = proxy.run(name)
-                print('The score you got:', score)
+                res = proxy.run(name)
+                print(str(res))
             elif cmd[0] == 'exit':
                 return
 
