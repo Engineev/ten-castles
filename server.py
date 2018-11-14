@@ -6,7 +6,7 @@ from typing import *
 
 
 class Server:
-    _rpc_methods_ = ['add', 'delete', 'run', 'check']
+    _rpc_methods_ = ['add', 'delete', 'run', 'check', 'duels']
 
     def __init__(self, address):
         self._strategies = shelve.open('ten_castles')
@@ -42,6 +42,25 @@ class Server:
             if name not in self._strategies:
                 return 'No such strategy'
             return name + ": " + str(self._strategies[name])
+
+    def duels(self):
+        if len(self._strategies) == 1:
+            return "Only one strategy exists"
+        with self._lock:
+            result = ""
+            for n1, s1 in self._strategies.items():
+                score = 0
+                for n2, s2 in self._strategies.items():
+                    if n1 == n2:
+                        continue
+                    cur_score = 0
+                    for i in range(0, 10):
+                        if s1[i] > 2 * s2[i]:
+                            cur_score += i + 1
+                    score += cur_score
+                score = score / (len(self._strategies) - 1)
+                result += n1 + ': ' + str(score) + '\n'
+            return result
 
     def _run(self, name: str):
         if name not in self._strategies:

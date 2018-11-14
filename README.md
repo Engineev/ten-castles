@@ -18,6 +18,8 @@ python3 ./client.py localhost:50001
 add uniform 10 10 10 10 10 10 10 10 10 10
 run uniform
 delete uniform
+check uniform
+duels
 exit
 
 ```

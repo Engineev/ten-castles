@@ -42,6 +42,9 @@ def run(address):
                 name = cmd[1]
                 res = proxy.check(name)
                 print(str(res))
+            elif cmd[0] == 'duels':
+                res = proxy.duels()
+                print(str(res))
             elif cmd[0] == 'exit':
                 return
 
