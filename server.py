@@ -5,7 +5,7 @@ from typing import *
 
 
 class Server:
-    _rpc_methods_ = ['add', 'delete', 'run']
+    _rpc_methods_ = ['add', 'delete', 'run', 'check']
 
     def __init__(self, address):
         self._strategies = {}
@@ -35,6 +35,12 @@ class Server:
         print('run:', name)
         with self._lock:
             return self._run(name)
+
+    def check(self, name: str):
+        with self._lock:
+            if name not in self._strategies:
+                return 'No such strategy'
+            return name + ": " + str(self._strategies[name])
 
     def _run(self, name: str):
         if name not in self._strategies:

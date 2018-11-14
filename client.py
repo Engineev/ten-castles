@@ -36,6 +36,10 @@ def run(address):
                 name = cmd[1]
                 res = proxy.run(name)
                 print(str(res))
+            elif cmd[0] == 'check':
+                name = cmd[1]
+                res = proxy.check(name)
+                print(str(res))
             elif cmd[0] == 'exit':
                 return
 
