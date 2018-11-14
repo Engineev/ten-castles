@@ -7,7 +7,7 @@ class Server:
     _rpc_methods_ = ['add']
 
     def __init__(self, address):
-        self._strategies: Dict[str, List[int]] = {}
+        self._strategies = {}
         self._srv = SimpleXMLRPCServer(address,
                                        allow_none=True, logRequests=False)
         self._srv.register_function(self.add, 'add')
