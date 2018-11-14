@@ -1,6 +1,7 @@
 from xmlrpc.server import SimpleXMLRPCServer
 import argparse
 import threading
+import shelve
 from typing import *
 
 
@@ -8,7 +9,7 @@ class Server:
     _rpc_methods_ = ['add', 'delete', 'run', 'check']
 
     def __init__(self, address):
-        self._strategies = {}
+        self._strategies = shelve.open('ten_castles')
         self._srv = SimpleXMLRPCServer(address,
                                        allow_none=True, logRequests=False)
         self._lock = threading.Lock()
@@ -61,7 +62,7 @@ class Server:
             score += cur_score
         if len(self._strategies) == 1:
             return 'No other strategies'
-        return 'average: ' + str(score // (len(self._strategies) - 1)) + '\n' \
+        return 'average: ' + str(score / (len(self._strategies) - 1)) + '\n' \
                + result
 
 
