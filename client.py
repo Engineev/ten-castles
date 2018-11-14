@@ -6,6 +6,8 @@ from typing import *
 
 def valid_strategy(strategy_: List[int]) -> bool:
     strategy = list(strategy_)
+    if len(strategy) != 10:
+        return False
     total = sum(strategy)
     if total > 100:
         return False
