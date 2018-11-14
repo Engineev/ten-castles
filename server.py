@@ -30,7 +30,9 @@ class Server:
             for i in range(0, 10):
                 if strategy[i] > 2 * v[i]:
                     score += i + 1
-        return score
+        if len(self._strategies) == 1:
+            return 0
+        return score // (len(self._strategies) - 1)
 
 
 if __name__ == '__main__':
